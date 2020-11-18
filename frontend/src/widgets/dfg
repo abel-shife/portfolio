@@ -1,0 +1,46 @@
+   <v-app-bar app 
+     dark
+     inverted-scroll
+    scroll-threshold=300
+      >
+       <v-toolbar-title class="ml-10 mr-16 white-text">
+       <span class="font-weight-light">Abel</span>|Devs|
+      </v-toolbar-title>
+     <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down" v-for="menu in menuList" :key="menu.title">
+         
+        <v-btn text dark @click="$router.push(menu.link).catch(err => {})">{{menu.title}}</v-btn>
+        
+    
+      </v-toolbar-items>
+
+   <v-app-bar-nav-icon class="hidden-md-and-up"
+        @click="sideBarDrawer = !sideBarDrawer"
+      >
+        <v-icon large>dehaze</v-icon>
+      </v-app-bar-nav-icon>
+    <div class="hidden-md-and-up">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-app-bar-nav-icon class="text-capitalize" v-on="on">
+              <v-icon>more_vert</v-icon>
+            </v-app-bar-nav-icon>
+          </template>
+          <v-list dark>
+            <v-list-item text @click="navigator({ name: '' })" >
+              <v-list-item-title class="white--text"
+                >Hire Me</v-list-item-title
+              >
+            </v-list-item>
+            <v-list-item @click="navigator({ name: '' })">
+              <v-list-item-title class="white--text"
+                >Abel's CV</v-list-item-title
+              >
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+      
+
+      
+    </v-app-bar>
